@@ -1,0 +1,8 @@
+{% extends "GBPersonaProviderDemoBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+<h1>Persona Identity Provider for Symfony2</h1>
+<p class="lead">Allow your registered members to use their identities on third party services.</p>
+<a href="{{ path('fos_user_registration_register') }}" class="btn btn-primary btn-large">Grab an Account</a>
+<a href="https://github.com/gigablah/GBPersonaProviderBundle" target="_blank" class="btn btn-large">GitHub Source</a>
+{% endblock fos_user_content %}

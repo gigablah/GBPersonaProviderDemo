@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="{{ asset('bundles/gbpersonaproviderdemo/css/bootstrap.css') }}" rel="stylesheet">
+        <link href="{{ asset('bundles/gbpersonaproviderdemo/css/bootstrap-responsive.css') }}" rel="stylesheet">
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="brand" href="/">GBPersonaProviderBundle</a>
+                    <div class="nav-collapse collapse">
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <ul class="nav">
+                            <li>
+                                <a href="{{ path('fos_user_registration_confirmed') }}">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</a>
+                            </li>
+                        </ul>
+                        <ul class="nav pull-right">
+                            <li>
+                                <a href="{{ path('fos_user_security_logout') }}">
+                                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                </a>
+                            </li>
+                        </ul>
+                        {% else %}
+                        <ul class="nav">
+                            <li>
+                                <a href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a>
+                            </li>
+                        </ul>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                {% for key, message in app.session.getFlashes() %}
+                <div class="span12 alert {{ key }}">
+                    {{ message|trans({}, 'FOSUserBundle') }}
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="row">
+                <div class="span12">
+                    {% block fos_user_content %}
+                    {% endblock fos_user_content %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

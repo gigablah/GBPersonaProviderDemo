@@ -1,0 +1,10 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+    <h1>Your account is ready</h1>
+    <p class="lead">You're registered as <span class="text-success">{{ user.email }}</span></p>
+    <p>Now try logging in from a Persona-enabled website, such as <a target="_blank" href="http://123done.org">123done.org</a>.</p>
+    <p><span class="label label-important">Note</span> This is a demo site and not an actual email provider. Please don't send us any email. Accounts will be wiped periodically.</p>
+{% endblock fos_user_content %}

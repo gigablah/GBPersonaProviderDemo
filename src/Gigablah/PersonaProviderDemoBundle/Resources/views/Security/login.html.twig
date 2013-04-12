@@ -1,0 +1,28 @@
+{% extends "GBPersonaProviderDemoBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+{% if error %}
+    <div class="alert alert-error">{{ error|trans }}</div>
+{% endif %}
+
+<form action="{{ path("fos_user_security_check") }}" method="post">
+    <fieldset>
+        <legend>{{ 'layout.login'|trans }}</legend>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+        <label for="username">{{ 'security.login.username'|trans }}</label>
+        <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+
+        <label for="password">{{ 'security.login.password'|trans }}</label>
+        <input type="password" id="password" name="_password" required="required" />
+
+        <label class="checkbox" for="remember_me">
+            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />{{ 'security.login.remember_me'|trans }}
+        </label>
+
+        <button type="submit" class="btn btn-primary" id="_submit" name="_submit">{{ 'security.login.submit'|trans }}</button>
+    </fieldset>
+</form>
+{% endblock fos_user_content %}

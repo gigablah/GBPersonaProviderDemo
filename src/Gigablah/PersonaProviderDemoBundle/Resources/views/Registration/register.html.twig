@@ -1,0 +1,28 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% form_theme form _self %}
+
+{% block _fos_user_registration_form_username_widget %}
+{% spaceless %}
+    <div class="input-append">
+        <input type="text" {{ block('widget_attributes') }} />
+        <span class="add-on">@{{ gb_persona_provider.host }}</span>
+    </div>
+{% endspaceless %}
+{% endblock %}
+
+{% block form_errors %}
+{% spaceless %}
+    {% if errors|length > 0 %}
+    <ul>
+        {% for error in errors %}
+            <li class="text-error">{{ error.message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+{% endspaceless %}
+{% endblock form_errors %}
+
+{% block fos_user_content %}
+{% include "FOSUserBundle:Registration:register_content.html.twig" %}
+{% endblock fos_user_content %}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Persona Provider Demo</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="{{ asset('bundles/gbpersonaproviderdemo/css/bootstrap.css') }}" rel="stylesheet">
+        <link href="{{ asset('bundles/gbpersonaproviderdemo/css/bootstrap-responsive.css') }}" rel="stylesheet">
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://login.persona.org/include.js"></script>
+        {% block gb_persona_provider_js %}
+        {% endblock gb_persona_provider_js %}
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="brand" href="#">GBPersonaProviderBundle</a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    {% block gb_persona_provider_content %}
+                    {% endblock gb_persona_provider_content %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

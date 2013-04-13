@@ -83,7 +83,7 @@ fos_rest:
 
 # GBPersonaProviderBundle Configuration
 gb_persona_provider:
-    host:     %persona_host%
+    host: %persona_host%
 
 services:
     serializer:
@@ -98,3 +98,7 @@ services:
         arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: gb_persona_provider_demo_user_registration }
+
+parameters:
+    divi.ajax_login.ajax_athentication_success_handler.class: Gigablah\PersonaProviderDemoBundle\Security\Http\Authentication\AjaxAuthenticationSuccessHandler
+    divi.ajax_login.ajax_athentication_failure_handler.class: Gigablah\PersonaProviderDemoBundle\Security\Http\Authentication\AjaxAuthenticationFailureHandler

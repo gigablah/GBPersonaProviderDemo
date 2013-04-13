@@ -17,7 +17,7 @@ class AjaxAuthenticationFailureHandler extends BaseAjaxAuthenticationFailureHand
 		if ($request->isXmlHttpRequest()) {
 			$response = parent::onAuthenticationFailure($request, $exception);
 
-			return new JsonResponse(json_decode($response->getContent()));
+			return new JsonResponse(json_decode($response->getContent()), 401);
 		}
 
 		return parent::onAuthenticationFailure($request, $exception);
